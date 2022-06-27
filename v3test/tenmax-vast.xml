@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VAST version="3.0">
+  <Ad id="40688">
+    <InLine>
+      <AdSystem version="0.1"><![CDATA[Tenmax]]></AdSystem>
+      <Error><![CDATA[https://ssp.tenmax.io/supply/tracking/vast/error?bid=af155ee1-dcfe-11ec-81f2-cdac3515926f&sid=8769f2d341174037&error=[ERRORCODE]&dspurl=https%3A%2F%2Frtb.tenmax.io%2Fbid%2Fasiamax%2Ferror%2Faf155ee1-dcfe-11ec-81f2-cdac3515926f%2F40688%2F23023%3Fv%3D3_0%26error%3D%5BERRORCODE%5D]]></Error>
+      <Impression><![CDATA[https://rtb.tenmax.io/bid/asiamax/impreWithPrice/1653574695891/af155ee1-dcfe-11ec-81f2-cdac3515926f/40688/23023/null/xlKQuDakTImG?optInfo=xlKZgQhfNuGdeKB4&bidPriceInfo=xlKQuDakTImG&viewable=true]]></Impression>
+      <Impression><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/pixel?bid=af155ee1-dcfe-11ec-81f2-cdac3515926f&sid=8769f2d341174037&iid=0&dspid=db0efe1b-8522-45f8-a460-86bf42e3e3b8]]></Impression>
+      <Impression><![CDATA[https://dmp.tenmax.io/p/b734323b-0532-40a6-8d4e-782e1c96bd3a?random=af155ee1-dcfe-11ec-81f2-cdac3515926f]]></Impression>
+      <Impression><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/video/win/pixel?bid=af155ee1-dcfe-11ec-81f2-cdac3515926f&sid=8769f2d341174037]]></Impression>
+      <Impression><![CDATA[https://ssp.tenmax.io/supply/tracking/impression?bid=af155ee0-dcfe-11ec-81f2-cdac3515926f&chid=19677bdc5c76495d&sid=8769f2d341174037]]></Impression>
+      <Creatives>
+        <Creative id="23023" sequence="1">
+          <Linear skipoffset="00:00:05">
+            <Duration>00:00:16</Duration>
+            <TrackingEvents>
+              <Tracking event="progress" offset="00:00:02"><![CDATA[https://rtb.tenmax.io/bid/asiamax/tracking/af155ee1-dcfe-11ec-81f2-cdac3515926f/40688/progress?offset=2&stdView=true]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[https://rtb.tenmax.io/bid/asiamax/tracking/af155ee1-dcfe-11ec-81f2-cdac3515926f/40688/FIRSTQUARTILE]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[https://rtb.tenmax.io/bid/asiamax/tracking/af155ee1-dcfe-11ec-81f2-cdac3515926f/40688/MIDPOINT]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[https://rtb.tenmax.io/bid/asiamax/tracking/af155ee1-dcfe-11ec-81f2-cdac3515926f/40688/THIRDQUARTILE]]></Tracking>
+              <Tracking event="complete"><![CDATA[https://rtb.tenmax.io/bid/asiamax/tracking/af155ee1-dcfe-11ec-81f2-cdac3515926f/40688/COMPLETE?optInfo=xlKZgQhfNuGdeKB4&VideoViewed=true]]></Tracking>
+              <Tracking event="skip"><![CDATA[https://rtb.tenmax.io/bid/asiamax/tracking/af155ee1-dcfe-11ec-81f2-cdac3515926f/40688/SKIP]]></Tracking>
+              <Tracking event="creativeView"><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/video/creativeView/af155ee1-dcfe-11ec-81f2-cdac3515926f]]></Tracking>
+              <Tracking event="start"><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/video/start/af155ee1-dcfe-11ec-81f2-cdac3515926f]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/video/firstQuartile/af155ee1-dcfe-11ec-81f2-cdac3515926f]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/video/midpoint/af155ee1-dcfe-11ec-81f2-cdac3515926f]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/video/thirdQuartile/af155ee1-dcfe-11ec-81f2-cdac3515926f]]></Tracking>
+              <Tracking event="complete"><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/video/complete/af155ee1-dcfe-11ec-81f2-cdac3515926f]]></Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickThrough><![CDATA[https://rtb.tenmax.io/bid/asiamax/click/1653574695891/af155ee1-dcfe-11ec-81f2-cdac3515926f/40688/23023?optInfo=xlKZgQhfNuGdeKB4&feedId=25afae00-1dd3-11b2-8080-808080808080&sUrl=https%3A%2F%2Fssp.tenmax.io%2Fauction%2Fwinner%2Ftracking%2Fclk%3Fbid%3Daf155ee1-dcfe-11ec-81f2-cdac3515926f%26ssid%3Daf155ee0-dcfe-11ec-81f2-cdac3515926f%26iid%3D0%26dspid%3Ddb0efe1b-8522-45f8-a460-86bf42e3e3b8%26adurl%3D&rUrl=https%3A%2F%2Fs.tenmax.io%2FOBdsq]]></ClickThrough>
+              <ClickTracking><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/clk?bid=af155ee1-dcfe-11ec-81f2-cdac3515926f&ssid=af155ee0-dcfe-11ec-81f2-cdac3515926f&iid=0&dspid=db0efe1b-8522-45f8-a460-86bf42e3e3b8&adurl=]]></ClickTracking>
+              <ClickTracking><![CDATA[https://ssp.tenmax.io/supply/tracking/clk?bid=af155ee0-dcfe-11ec-81f2-cdac3515926f&chid=19677bdc5c76495d&sid=8769f2d341174037&adurl=]]></ClickTracking>
+            </VideoClicks>
+            <MediaFiles>
+              <MediaFile delivery="progressive" type="video/mp4" bitrate="400" width="1920" height="1080"><![CDATA[https://dsp-video-cdn.tenmax.io/upload/2/3/0/2/3/0c2bab35c50b4a0490cfa7e/23023.mp4]]></MediaFile>
+            </MediaFiles>
+          </Linear>
+        </Creative>
+      </Creatives>
+      <Extensions>
+        <Extension>
+          <ViewableImpression>
+            <Viewable><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/viewable?bid=af155ee1-dcfe-11ec-81f2-cdac3515926f&noAd=[noAd]]]></Viewable>
+            <ViewUndetermined><![CDATA[https://ssp.tenmax.io/auction/winner/tracking/viewable?bid=af155ee1-dcfe-11ec-81f2-cdac3515926f&noAd=[noAd]]]></ViewUndetermined>
+          </ViewableImpression>
+        </Extension>
+        <Extension>
+          <ViewableImpression>
+            <Viewable><![CDATA[https://ssp.tenmax.io/supply/tracking/viewable?bid=af155ee0-dcfe-11ec-81f2-cdac3515926f&chid=19677bdc5c76495d&sid=8769f2d341174037&noAd=[noAd]]]></Viewable>
+            <ViewUndetermined><![CDATA[https://ssp.tenmax.io/supply/tracking/viewable?bid=af155ee0-dcfe-11ec-81f2-cdac3515926f&chid=19677bdc5c76495d&sid=8769f2d341174037&noAd=[noAd]]]></ViewUndetermined>
+          </ViewableImpression>
+        </Extension>
+      </Extensions>
+    </InLine>
+  </Ad>
+</VAST>
