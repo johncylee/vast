@@ -7,25 +7,30 @@ import (
 	"testing"
 )
 
-func testVAST2File(t *testing.T, fn string) {
-	var v VAST2
+func testXML(t *testing.T, fn string, v interface{}) {
 	b, err := os.ReadFile(fn)
 	if err != nil {
-		t.Fatal(err)
+		t.Fatal("os.ReadFile:", err)
 	}
-	err = xml.Unmarshal(b, &v)
-	if err != nil {
-		t.Fatal(err)
+	if err = xml.Unmarshal(b, v); err != nil {
+		t.Fatal("xml.Unmarshal:", err)
 	}
 	marshaled, err := xml.MarshalIndent(v, "", "  ")
 	if err != nil {
-		t.Fatal(err)
+		t.Fatal("xml.MarshalIndent:", err)
 	}
 	expected := fn[:len(fn)-4] + "-marshaled.xml"
-	b, err = os.ReadFile(expected)
+	if b, err = os.ReadFile(expected); err != nil {
+		t.Fatal("os.ReadFile:", err)
+	}
 	if bytes.Compare(marshaled, b) != 0 {
 		t.Fatal("Unexpected marshel output:", fn)
 	}
+}
+
+func testVAST2File(t *testing.T, fn string) {
+	var v VAST2
+	testXML(t, fn, &v)
 }
 
 func TestVAST2(t *testing.T) {

@@ -1,31 +1,12 @@
 package vast
 
 import (
-	"bytes"
-	"encoding/xml"
-	"os"
 	"testing"
 )
 
 func testVAST3File(t *testing.T, fn string) {
 	var v VAST3
-	b, err := os.ReadFile(fn)
-	if err != nil {
-		t.Fatal(err)
-	}
-	err = xml.Unmarshal(b, &v)
-	if err != nil {
-		t.Fatal(err)
-	}
-	marshaled, err := xml.MarshalIndent(v, "", "  ")
-	if err != nil {
-		t.Fatal(err)
-	}
-	expected := fn[:len(fn)-4] + "-marshaled.xml"
-	b, err = os.ReadFile(expected)
-	if bytes.Compare(marshaled, b) != 0 {
-		t.Fatal("Unexpected marshel output:", fn)
-	}
+	testXML(t, fn, &v)
 }
 
 func TestVAST3(t *testing.T) {
