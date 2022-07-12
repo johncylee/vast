@@ -12,6 +12,8 @@ type V2Ad struct {
 	Id      string     `xml:"id,attr"`
 }
 
+// The "pointer to array" is a workaround. Without it, unmarshaling may creates an empty
+// array that leads to "<Extensions></Extensions>" after marshaling.
 type V2InLine struct {
 	AdSystem    V2AdSystem
 	AdTitle     string
@@ -19,8 +21,8 @@ type V2InLine struct {
 	Survey      *CDATAURI `xml:",omitempty"`
 	Error       *CDATAURI `xml:",omitempty"`
 	Impression  []IdURI
-	Creatives   []V2Creative  `xml:">Creative"`
-	Extensions  *V2Extensions `xml:",omitempty"`
+	Creatives   []V2Creative   `xml:">Creative"`
+	Extensions  *[]V2Extension `xml:">Extension,omitempty"`
 }
 
 type V2AdSystem struct {
@@ -30,7 +32,7 @@ type V2AdSystem struct {
 
 type V2Creative struct {
 	Linear       *V2Linear       `xml:",omitempty"`
-	CompanionAds *V2Companions   `xml:",omitempty"`
+	CompanionAds *[]V2Companion  `xml:">Companion,omitempty"`
 	NonLinearAds *V2NonLinearAds `xml:",omitempty"`
 	Id           string          `xml:"id,attr,omitempty"`
 	Sequence     *int            `xml:"sequence,attr,omitempty"`
@@ -39,16 +41,10 @@ type V2Creative struct {
 
 type V2Linear struct {
 	Duration       XsTime
-	TrackingEvents *V2Trackings   `xml:",omitempty"`
+	TrackingEvents *[]V2Tracking  `xml:">Tracking,omitempty"`
 	AdParameters   string         `xml:",omitempty"`
 	VideoClicks    *V2VideoClicks `xml:",omitempty"`
-	MediaFiles     *struct {
-		MediaFile []V2MediaFile
-	} `xml:",omitempty"`
-}
-
-type V2Trackings struct {
-	Tracking []V2Tracking `xml:",omitempty"`
+	MediaFiles     *[]V2MediaFile `xml:">MediaFile,omitempty"`
 }
 
 type V2Tracking struct {
@@ -75,15 +71,11 @@ type V2MediaFile struct {
 	Value               AnyURI `xml:",cdata"`
 }
 
-type V2Companions struct {
-	Companion []V2Companion `xml:",omitempty"`
-}
-
 type V2Companion struct {
 	StaticResource        *V2StaticResource `xml:",omitempty"`
 	IFrameResource        *CDATAURI         `xml:",omitempty"`
 	HTMLResource          *V2HTMLResource   `xml:",omitempty"`
-	TrackingEvents        *V2Trackings      `xml:",omitempty"`
+	TrackingEvents        *[]V2Tracking     `xml:">Tracking,omitempty"`
 	CompanionClickThrough *CDATAURI         `xml:",omitempty"`
 	AltText               string            `xml:",omitempty"`
 	AdParameters          string            `xml:",omitempty"`
@@ -105,7 +97,7 @@ type V2HTMLResource struct {
 }
 
 type V2NonLinearAds struct {
-	TrackingEvents *V2Trackings `xml:",omitempty"`
+	TrackingEvents *[]V2Tracking `xml:">Tracking,omitempty"`
 	NonLinear      []V2NonLinear
 }
 
@@ -126,10 +118,6 @@ type V2NonLinear struct {
 	ApiFramework          string            `xml:"apiFramework,attr,omitempty"`
 }
 
-type V2Extensions struct {
-	Extension []V2Extension `xml:",omitempty"`
-}
-
 type V2Extension struct {
 	Type  string `xml:"type,attr,omitempty"`
 	Value []byte `xml:",innerxml"`
@@ -140,13 +128,13 @@ type V2Wrapper struct {
 	VASTAdTagURI CDATAURI
 	Error        *CDATAURI `xml:",omitempty"`
 	Impression   []CDATAURI
-	Creatives    []V2WrappedCreative `xml:">Creative,omitempty"`
-	Extensions   *V2Extensions       `xml:",omitempty"`
+	Creatives    *[]V2WrappedCreative `xml:">Creative,omitempty"`
+	Extensions   *[]V2Extension       `xml:">Extension,omitempty"`
 }
 
 type V2WrappedCreative struct {
 	Linear       *V2WrappedLinear       `xml:",omitempty"`
-	CompanionAds *V2Companions          `xml:",omitempty"`
+	CompanionAds *[]V2Companion         `xml:">Companion,omitempty"`
 	NonLinearAds *V2WrappedNonLinearAds `xml:",omitempty"`
 	Id           string                 `xml:"id,attr,omitempty"`
 	Sequence     *int                   `xml:"sequence,attr,omitempty"`
@@ -154,12 +142,12 @@ type V2WrappedCreative struct {
 }
 
 type V2WrappedLinear struct {
-	TrackingEvents *V2Trackings   `xml:",omitempty"`
+	TrackingEvents *[]V2Tracking  `xml:">Tracking,omitempty"`
 	VideoClicks    *V2VideoClicks `xml:",omitempty"`
 	ClickTracking  []IdURI        `xml:",omitempty"`
 }
 
 type V2WrappedNonLinearAds struct {
-	TrackingEvents *V2Trackings  `xml:",omitempty"`
+	TrackingEvents *[]V2Tracking `xml:">Tracking,omitempty"`
 	NonLinear      []V2NonLinear `xml:",omitempty"`
 }

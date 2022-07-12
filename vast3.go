@@ -13,6 +13,8 @@ type V3Ad struct {
 	Sequence *int       `xml:"sequence,attr,omitempty"`
 }
 
+// The "pointer to array" is a workaround. Without it, unmarshaling may creates an empty
+// array that leads to "<Extensions></Extensions>" after marshaling.
 type V3InLine struct {
 	AdSystem    V3AdSystem
 	AdTitle     string
@@ -22,8 +24,8 @@ type V3InLine struct {
 	Survey      *CDATAURI  `xml:",omitempty"`
 	Error       *CDATAURI  `xml:",omitempty"`
 	Impression  []IdURI
-	Creatives   []V3Creative  `xml:">Creative"`
-	Extensions  *V3Extensions `xml:",omitempty"`
+	Creatives   []V3Creative   `xml:">Creative"`
+	Extensions  *[]V2Extension `xml:">Extension,omitempty"`
 }
 
 type V3AdSystem struct {
@@ -47,20 +49,14 @@ type V3Creative struct {
 }
 
 type V3Linear struct {
-	Icons              *V3Icons              `xml:",omitempty"`
-	CreativeExtensions *V3CreativeExtensions `xml:",omitempty"`
+	Icons              *[]V3Icon      `xml:">Icon,omitempty"`
+	CreativeExtensions *[]V2Extension `xml:">CreativeExtension,omitempty"`
 	Duration           XsTime
-	TrackingEvents     *V3Trackings    `xml:",omitempty"`
+	TrackingEvents     *[]V3Tracking   `xml:">Tracking,omitempty"`
 	AdParameters       *V3AdParameters `xml:",omitempty"`
 	VideoClicks        *V2VideoClicks  `xml:",omitempty"`
-	MediaFiles         *struct {
-		MediaFile []V3MediaFile
-	} `xml:",omitempty"`
-	SkipOffset string `xml:"skipoffset,attr,omitempty"`
-}
-
-type V3Icons struct {
-	Icon []V3Icon
+	MediaFiles         *[]V3MediaFile  `xml:">MediaFile,omitempty"`
+	SkipOffset         string          `xml:"skipoffset,attr,omitempty"`
 }
 
 type V3Icon struct {
@@ -87,14 +83,6 @@ type V3HTMLResource struct {
 type V3IconClicks struct {
 	IconClickTracking []CDATAURI `xml:",omitempty"`
 	IconClickThrough  *CDATAURI  `xml:",omitempty"`
-}
-
-type V3CreativeExtensions struct {
-	CreativeExtension []V2Extension `xml:",omitempty"`
-}
-
-type V3Trackings struct {
-	Tracking []V3Tracking `xml:",omitempty"`
 }
 
 type V3Tracking struct {
@@ -130,51 +118,47 @@ type V3CompanionAds struct {
 }
 
 type V3Companion struct {
-	StaticResource        *V2StaticResource     `xml:",omitempty"`
-	IFrameResource        *CDATAURI             `xml:",omitempty"`
-	HTMLResource          *V3HTMLResource       `xml:",omitempty"`
-	CreativeExtensions    *V3CreativeExtensions `xml:",omitempty"`
-	TrackingEvents        *V3Trackings          `xml:",omitempty"`
-	CompanionClickThrough *CDATAURI             `xml:",omitempty"`
-	AltText               string                `xml:",omitempty"`
-	AdParameters          *V3AdParameters       `xml:",omitempty"`
-	Id                    string                `xml:"id,attr,omitempty"`
-	Width                 int                   `xml:"width,attr"`
-	Height                int                   `xml:"height,attr"`
-	AssetWidth            int                   `xml:"assetWidth,attr,omitempty"`
-	AssetHeight           int                   `xml:"assetHeight,attr,omitempty"`
-	ExpandedWidth         int                   `xml:"expandedWidth,attr,omitempty"`
-	ExpandedHeight        int                   `xml:"expandedHeight,attr,omitempty"`
-	ApiFramework          string                `xml:"apiFramework,attr,omitempty"`
-	AdSlotId              string                `xml:"adSlotId,attr,omitempty"`
+	StaticResource        *V2StaticResource `xml:",omitempty"`
+	IFrameResource        *CDATAURI         `xml:",omitempty"`
+	HTMLResource          *V3HTMLResource   `xml:",omitempty"`
+	CreativeExtensions    *[]V2Extension    `xml:">CreativeExtension,omitempty"`
+	TrackingEvents        *[]V3Tracking     `xml:">Tracking,omitempty"`
+	CompanionClickThrough *CDATAURI         `xml:",omitempty"`
+	AltText               string            `xml:",omitempty"`
+	AdParameters          *V3AdParameters   `xml:",omitempty"`
+	Id                    string            `xml:"id,attr,omitempty"`
+	Width                 int               `xml:"width,attr"`
+	Height                int               `xml:"height,attr"`
+	AssetWidth            int               `xml:"assetWidth,attr,omitempty"`
+	AssetHeight           int               `xml:"assetHeight,attr,omitempty"`
+	ExpandedWidth         int               `xml:"expandedWidth,attr,omitempty"`
+	ExpandedHeight        int               `xml:"expandedHeight,attr,omitempty"`
+	ApiFramework          string            `xml:"apiFramework,attr,omitempty"`
+	AdSlotId              string            `xml:"adSlotId,attr,omitempty"`
 }
 
 type V3NonLinearAds struct {
-	TrackingEvents *V3Trackings `xml:",omitempty"`
+	TrackingEvents *[]V3Tracking `xml:">Tracking,omitempty"`
 	NonLinear      []V3NonLinear
 }
 
 type V3NonLinear struct {
-	StaticResource         *V2StaticResource     `xml:",omitempty"`
-	IFrameResource         *CDATAURI             `xml:",omitempty"`
-	HTMLResource           *V3HTMLResource       `xml:",omitempty"`
-	CreativeExtensions     *V3CreativeExtensions `xml:",omitempty"`
-	NonLinearClickTracking []CDATAURI            `xml:",omitempty"`
-	NonLinearClickThrough  *CDATAURI             `xml:",omitempty"`
-	AdParameters           *V3AdParameters       `xml:",omitempty"`
-	Id                     string                `xml:"id,attr,omitempty"`
-	Width                  int                   `xml:"width,attr"`
-	Height                 int                   `xml:"height,attr"`
-	ExpandedWidth          int                   `xml:"expandedWidth,attr,omitempty"`
-	ExpandedHeight         int                   `xml:"expandedHeight,attr,omitempty"`
-	Scalable               bool                  `xml:"scalable,attr,omitempty"`
-	MaintainAspectRatio    bool                  `xml:"maintainAspectRatio,attr,omitempty"`
-	MinSuggestedDuration   *XsTime               `xml:"minSuggestedDuration,attr,omitempty"`
-	ApiFramework           string                `xml:"apiFramework,attr,omitempty"`
-}
-
-type V3Extensions struct {
-	Extension []V2Extension `xml:",omitempty"`
+	StaticResource         *V2StaticResource `xml:",omitempty"`
+	IFrameResource         *CDATAURI         `xml:",omitempty"`
+	HTMLResource           *V3HTMLResource   `xml:",omitempty"`
+	CreativeExtensions     *[]V2Extension    `xml:">CreativeExtension,omitempty"`
+	NonLinearClickTracking []CDATAURI        `xml:",omitempty"`
+	NonLinearClickThrough  *CDATAURI         `xml:",omitempty"`
+	AdParameters           *V3AdParameters   `xml:",omitempty"`
+	Id                     string            `xml:"id,attr,omitempty"`
+	Width                  int               `xml:"width,attr"`
+	Height                 int               `xml:"height,attr"`
+	ExpandedWidth          int               `xml:"expandedWidth,attr,omitempty"`
+	ExpandedHeight         int               `xml:"expandedHeight,attr,omitempty"`
+	Scalable               bool              `xml:"scalable,attr,omitempty"`
+	MaintainAspectRatio    bool              `xml:"maintainAspectRatio,attr,omitempty"`
+	MinSuggestedDuration   *XsTime           `xml:"minSuggestedDuration,attr,omitempty"`
+	ApiFramework           string            `xml:"apiFramework,attr,omitempty"`
 }
 
 type V3Wrapper struct {
@@ -182,15 +166,13 @@ type V3Wrapper struct {
 	VASTAdTagURI CDATAURI
 	Error        *CDATAURI `xml:",omitempty"`
 	Impression   []CDATAURI
-	Creatives    V3WrappedCreative `xml:">Creative,omitempty"`
-	Extensions   *V3Extensions     `xml:",omitempty"`
+	Creatives    *[]V3WrappedCreative `xml:">Creative,omitempty"`
+	Extensions   *[]V2Extension       `xml:">Extension,omitempty"`
 }
 
 type V3WrappedCreative struct {
-	Linear       *V3WrappedLinear `xml:",omitempty"`
-	CompanionAds *struct {
-		Companion []V3CompanionWrapper `xml:",omitempty"`
-	} `xml:",omitempty"`
+	Linear       *V3WrappedLinear       `xml:",omitempty"`
+	CompanionAds *[]V3CompanionWrapper  `xml:">Companion,omitempty"`
 	NonLinearAds *V3WrappedNonLinearAds `xml:",omitempty"`
 	Id           string                 `xml:"id,attr,omitempty"`
 	Sequence     *int                   `xml:"sequence,attr,omitempty"`
@@ -198,9 +180,9 @@ type V3WrappedCreative struct {
 }
 
 type V3WrappedLinear struct {
-	CreativeExtensions *V3CreativeExtensions `xml:",omitempty"`
-	Icons              *V3Icons              `xml:",omitempty"`
-	TrackingEvents     *V3Trackings          `xml:",omitempty"`
+	CreativeExtensions *[]V2Extension        `xml:">CreativeExtension,omitempty"`
+	Icons              *[]V3Icon             `xml:">Icon,omitempty"`
+	TrackingEvents     *[]V3Tracking         `xml:">Tracking,omitempty"`
 	VideoClicks        *V3WrappedVideoClicks `xml:",omitempty"`
 }
 
@@ -210,41 +192,41 @@ type V3WrappedVideoClicks struct {
 }
 
 type V3CompanionWrapper struct {
-	StaticResource         *V2StaticResource     `xml:",omitempty"`
-	IFrameResource         *CDATAURI             `xml:",omitempty"`
-	HTMLResource           *V3HTMLResource       `xml:",omitempty"`
-	CreativeExtensions     *V3CreativeExtensions `xml:",omitempty"`
-	TrackingEvents         *V3Trackings          `xml:",omitempty"`
-	CompanionClickThrough  *CDATAURI             `xml:",omitempty"`
-	CompanionClickTracking []CDATAURI            `xml:",omitempty"`
-	AltText                string                `xml:",omitempty"`
-	AdParameters           *V3AdParameters       `xml:",omitempty"`
-	Id                     string                `xml:"id,attr,omitempty"`
-	Width                  int                   `xml:"width,attr"`
-	Height                 int                   `xml:"height,attr"`
-	AssetWidth             int                   `xml:"assetWidth,attr,omitempty"`
-	AssetHeight            int                   `xml:"assetHeight,attr,omitempty"`
-	ExpandedWidth          int                   `xml:"expandedWidth,attr,omitempty"`
-	ExpandedHeight         int                   `xml:"expandedHeight,attr,omitempty"`
-	ApiFramework           string                `xml:"apiFramework,attr,omitempty"`
-	AdSlotId               string                `xml:"adSlotId,attr,omitempty"`
+	StaticResource         *V2StaticResource `xml:",omitempty"`
+	IFrameResource         *CDATAURI         `xml:",omitempty"`
+	HTMLResource           *V3HTMLResource   `xml:",omitempty"`
+	CreativeExtensions     *[]V2Extension    `xml:">CreativeExtension,omitempty"`
+	TrackingEvents         *[]V3Tracking     `xml:">Tracking,omitempty"`
+	CompanionClickThrough  *CDATAURI         `xml:",omitempty"`
+	CompanionClickTracking []CDATAURI        `xml:",omitempty"`
+	AltText                string            `xml:",omitempty"`
+	AdParameters           *V3AdParameters   `xml:",omitempty"`
+	Id                     string            `xml:"id,attr,omitempty"`
+	Width                  int               `xml:"width,attr"`
+	Height                 int               `xml:"height,attr"`
+	AssetWidth             int               `xml:"assetWidth,attr,omitempty"`
+	AssetHeight            int               `xml:"assetHeight,attr,omitempty"`
+	ExpandedWidth          int               `xml:"expandedWidth,attr,omitempty"`
+	ExpandedHeight         int               `xml:"expandedHeight,attr,omitempty"`
+	ApiFramework           string            `xml:"apiFramework,attr,omitempty"`
+	AdSlotId               string            `xml:"adSlotId,attr,omitempty"`
 }
 
 type V3WrappedNonLinearAds struct {
-	TrackingEvents *V3Trackings         `xml:",omitempty"`
+	TrackingEvents *[]V3Tracking        `xml:">Tracking,omitempty"`
 	NonLinear      []V3NonLinearWrapper `xml:",omitempty"`
 }
 
 type V3NonLinearWrapper struct {
-	CreativeExtensions     *V3CreativeExtensions `xml:",omitempty"`
-	NonLinearClickTracking []CDATAURI            `xml:",omitempty"`
-	Id                     string                `xml:"id,attr,omitempty"`
-	Width                  int                   `xml:"width,attr"`
-	Height                 int                   `xml:"height,attr"`
-	ExpandedWidth          int                   `xml:"expandedWidth,attr,omitempty"`
-	ExpandedHeight         int                   `xml:"expandedHeight,attr,omitempty"`
-	Scalable               bool                  `xml:"scalable,attr,omitempty"`
-	MaintainAspectRatio    bool                  `xml:"maintainAspectRatio,attr,omitempty"`
-	MinSuggestedDuration   *XsTime               `xml:"minSuggestedDuration,attr,omitempty"`
-	ApiFramework           string                `xml:"apiFramework,attr,omitempty"`
+	CreativeExtensions     *[]V2Extension `xml:">CreativeExtension,omitempty"`
+	NonLinearClickTracking []CDATAURI     `xml:",omitempty"`
+	Id                     string         `xml:"id,attr,omitempty"`
+	Width                  int            `xml:"width,attr"`
+	Height                 int            `xml:"height,attr"`
+	ExpandedWidth          int            `xml:"expandedWidth,attr,omitempty"`
+	ExpandedHeight         int            `xml:"expandedHeight,attr,omitempty"`
+	Scalable               bool           `xml:"scalable,attr,omitempty"`
+	MaintainAspectRatio    bool           `xml:"maintainAspectRatio,attr,omitempty"`
+	MinSuggestedDuration   *XsTime        `xml:"minSuggestedDuration,attr,omitempty"`
+	ApiFramework           string         `xml:"apiFramework,attr,omitempty"`
 }
