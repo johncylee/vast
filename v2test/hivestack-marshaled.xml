@@ -1,0 +1,25 @@
+<VAST version="2.0">
+  <Ad id="1">
+    <InLine>
+      <AdSystem>Hivestack</AdSystem>
+      <AdTitle></AdTitle>
+      <Error><![CDATA[https://uat.hivestack.com/nirvana/api/v1/expirevast/abb76aea-1f46-4746-826f-56f764b2792c]]></Error>
+      <Impression><![CDATA[https://uat.hivestack.com/nirvana/api/v1/reportvast/abb76aea-1f46-4746-826f-56f764b2792c]]></Impression>
+      <Creatives>
+        <Creative id="f171b5a9-6f65-41be-9ccc-221cd9565e74">
+          <Linear>
+            <Duration>00:00:20</Duration>
+            <MediaFiles>
+              <MediaFile delivery="progressive" type="image/png" width="1920" height="1080"><![CDATA[https://cdn-uat.hivestack.com/f1748f4c-4f25-47ac-8423-61703ab97118/creative.png]]></MediaFile>
+            </MediaFiles>
+          </Linear>
+        </Creative>
+      </Creatives>
+      <Extensions>
+        <Extension type="hivestack-attributes">
+          <purchase_type>G</purchase_type>
+        </Extension>
+      </Extensions>
+    </InLine>
+  </Ad>
+</VAST>

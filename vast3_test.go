@@ -1,6 +1,7 @@
 package vast
 
 import (
+	"bytes"
 	"encoding/xml"
 	"os"
 	"testing"
@@ -16,11 +17,15 @@ func testVAST3File(t *testing.T, fn string) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	b, err = xml.MarshalIndent(v, "", "  ")
+	marshaled, err := xml.MarshalIndent(v, "", "  ")
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Log(string(b))
+	expected := fn[:len(fn)-4] + "-marshaled.xml"
+	b, err = os.ReadFile(expected)
+	if bytes.Compare(marshaled, b) != 0 {
+		t.Fatal("Unexpected marshel output:", fn)
+	}
 }
 
 func TestVAST3(t *testing.T) {
