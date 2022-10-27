@@ -13,7 +13,12 @@ func (p *AnyURI) MarshalText() ([]byte, error) {
 }
 
 func (p *AnyURI) UnmarshalText(text []byte) (err error) {
-	u, err := url.ParseRequestURI(strings.TrimSpace(string(text)))
+	s := strings.TrimSpace(string(text))
+	if s == "" {
+		*p = AnyURI(url.URL{})
+		return
+	}
+	u, err := url.ParseRequestURI(s)
 	if err != nil {
 		return
 	}

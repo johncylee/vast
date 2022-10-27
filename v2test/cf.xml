@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="2.0">
+    <Ad id="14248:25881:125217:41944735b7f6794ce8c15145ad53d4f1:5813">
+        <InLine>
+            <AdSystem version="2.0">CLICKFORCE</AdSystem>
+            <AdTitle>CLICKFORCE</AdTitle>
+            <Error></Error>
+            <Impression>
+                <![CDATA[https://ad.holmesmind.com/adserver/i?ut=1666778586&p=14248:25881:125217:41944735b7f6794ce8c15145ad53d4f1:5813]]>
+            </Impression>
+            <Impression>
+                <![CDATA[https://m.holmesmind.com/cm]]>
+            </Impression>            
+            
+            <Creatives>
+                <Creative sequence="1">
+                    <Linear >
+                       <Duration>00:00:30</Duration>
+                       <TrackingEvents>
+                            <Tracking event="start">
+                             <![CDATA[https://ad.holmesmind.com/adserver/v?id=41944735b7f6794ce8c15145ad53d4f1-14248&duration=30&track=1]]>
+                            </Tracking>
+                            <Tracking event="firstQuartile">
+                                <![CDATA[https://ad.holmesmind.com/adserver/v?id=41944735b7f6794ce8c15145ad53d4f1-14248&duration=30&track=2]]>
+                            </Tracking>
+                            <Tracking event="midpoint">
+                                <![CDATA[https://ad.holmesmind.com/adserver/v?id=41944735b7f6794ce8c15145ad53d4f1-14248&duration=30&track=3]]>
+                            </Tracking>
+                            <Tracking event="thirdQuartile">
+                                <![CDATA[https://ad.holmesmind.com/adserver/v?id=41944735b7f6794ce8c15145ad53d4f1-14248&duration=30&track=4]]>
+                            </Tracking>
+                            <Tracking event="complete">
+                                <![CDATA[https://ad.holmesmind.com/adserver/v?id=41944735b7f6794ce8c15145ad53d4f1-14248&duration=30&track=5]]>
+                            </Tracking>
+                        </TrackingEvents>
+                        <VideoClicks>
+                            <ClickThrough><![CDATA[https://ad.holmesmind.com/adserver/c?p=14248:25881:125217:41944735b7f6794ce8c15145ad53d4f1:5813&dest=https%3A%2F%2Fwww.clickforce.com.tw%2Fedcontent_d.php%3Flang%3Dtw%26tb%3D4%26id%3D6100]]></ClickThrough>
+                            
+                        </VideoClicks>
+                        <MediaFiles>
+                            <MediaFile id="1" delivery="progressive" type="video/mp4" width="1920" height="1080"> 
+                                https://v.holmesmind.com/5813/video/output/l_e46b96e8ff76f1471e97e42887a5c57d.mp4
+                            </MediaFile>
+                            
+                        </MediaFiles>
+                    </Linear>
+                </Creative>
+            </Creatives>
+        </InLine>
+    </Ad>
+</VAST>
