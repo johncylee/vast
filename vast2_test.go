@@ -47,3 +47,32 @@ func TestVAST2(t *testing.T) {
 		testVAST2File(t, fn)
 	}
 }
+
+func TestEmpty(t *testing.T) {
+	var v2 VAST2
+	v2.Version = "2.0"
+	marshaled, err := xml.MarshalIndent(v2, "", "  ")
+	if err != nil {
+		t.Fatal("xml.MarshalIndent:", err)
+	}
+	fn := "v2test/empty-marshaled.xml"
+	b, err := os.ReadFile(fn)
+	if err != nil {
+		t.Fatal("os.ReadFile:", err)
+	}
+	if bytes.Compare(marshaled, b) != 0 {
+		t.Fatal("Unexpected marshel output:", string(marshaled))
+	}
+	var v3 VAST3
+	v3.Version = "3.0"
+	if marshaled, err = xml.MarshalIndent(v3, "", "  "); err != nil {
+		t.Fatal("xml.MarshalIndent:", err)
+	}
+	fn = "v3test/empty-marshaled.xml"
+	if b, err = os.ReadFile(fn); err != nil {
+		t.Fatal("os.ReadFile:", err)
+	}
+	if bytes.Compare(marshaled, b) != 0 {
+		t.Fatal("Unexpected marshel output:", string(marshaled))
+	}
+}
