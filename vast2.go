@@ -18,8 +18,8 @@ type V2InLine struct {
 	AdSystem    V2AdSystem
 	AdTitle     string
 	Description string    `xml:",omitempty"`
-	Survey      *CDATAURI `xml:",omitempty"`
-	Error       *CDATAURI `xml:",omitempty"`
+	Survey      *CDataURI `xml:",omitempty"`
+	Error       *CDataURI `xml:",omitempty"`
 	Impression  []IdURI
 	Creatives   []V2Creative   `xml:">Creative"`
 	Extensions  *[]V2Extension `xml:">Extension,omitempty"`
@@ -73,10 +73,10 @@ type V2MediaFile struct {
 
 type V2Companion struct {
 	StaticResource        *V2StaticResource `xml:",omitempty"`
-	IFrameResource        *CDATAURI         `xml:",omitempty"`
-	HTMLResource          *V2HTMLResource   `xml:",omitempty"`
+	IFrameResource        *CDataURI         `xml:",omitempty"`
+	HTMLResource          *CDataElement     `xml:",omitempty"`
 	TrackingEvents        *[]V2Tracking     `xml:">Tracking,omitempty"`
-	CompanionClickThrough *CDATAURI         `xml:",omitempty"`
+	CompanionClickThrough *CDataURI         `xml:",omitempty"`
 	AltText               string            `xml:",omitempty"`
 	AdParameters          string            `xml:",omitempty"`
 	Id                    string            `xml:"id,attr,omitempty"`
@@ -92,10 +92,6 @@ type V2StaticResource struct {
 	Value        AnyURI `xml:",cdata"`
 }
 
-type V2HTMLResource struct {
-	Value string `xml:",cdata"`
-}
-
 type V2NonLinearAds struct {
 	TrackingEvents *[]V2Tracking `xml:">Tracking,omitempty"`
 	NonLinear      []V2NonLinear
@@ -103,9 +99,9 @@ type V2NonLinearAds struct {
 
 type V2NonLinear struct {
 	StaticResource        *V2StaticResource `xml:",omitempty"`
-	IFrameResource        *CDATAURI         `xml:",omitempty"`
-	HTMLResource          *V2HTMLResource   `xml:",omitempty"`
-	NonLinearClickThrough *CDATAURI         `xml:",omitempty"`
+	IFrameResource        *CDataURI         `xml:",omitempty"`
+	HTMLResource          *CDataElement     `xml:",omitempty"`
+	NonLinearClickThrough *CDataURI         `xml:",omitempty"`
 	AdParameters          string            `xml:",omitempty"`
 	Id                    string            `xml:"id,attr,omitempty"`
 	Width                 int               `xml:"width,attr"`
@@ -125,9 +121,9 @@ type V2Extension struct {
 
 type V2Wrapper struct {
 	AdSystem     V2AdSystem
-	VASTAdTagURI CDATAURI
-	Error        *CDATAURI `xml:",omitempty"`
-	Impression   []CDATAURI
+	VASTAdTagURI CDataURI
+	Error        *CDataURI `xml:",omitempty"`
+	Impression   []CDataURI
 	Creatives    *[]V2WrappedCreative `xml:">Creative,omitempty"`
 	Extensions   *[]V2Extension       `xml:">Extension,omitempty"`
 }

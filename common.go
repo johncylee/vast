@@ -26,7 +26,7 @@ func (p *AnyURI) UnmarshalText(text []byte) (err error) {
 	return
 }
 
-type CDATAURI struct {
+type CDataURI struct {
 	Value AnyURI `xml:",cdata"`
 }
 
@@ -53,4 +53,13 @@ func (d *XsTime) UnmarshalText(text []byte) (err error) {
 	}
 	*d = XsTime(t.Sub(start))
 	return
+}
+
+type CDataElement struct {
+	Value string `xml:",cdata"`
+}
+
+type AuthorityElement struct {
+	Value     string
+	Authority *AnyURI `xml:"authority,attr,omitempty"`
 }

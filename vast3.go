@@ -21,8 +21,8 @@ type V3InLine struct {
 	Description string     `xml:",omitempty"`
 	Advertiser  string     `xml:",omitempty"`
 	Pricing     *V3Pricing `xml:",omitempty"`
-	Survey      *CDATAURI  `xml:",omitempty"`
-	Error       *CDATAURI  `xml:",omitempty"`
+	Survey      *CDataURI  `xml:",omitempty"`
+	Error       *CDataURI  `xml:",omitempty"`
 	Impression  []IdURI
 	Creatives   []V3Creative   `xml:">Creative"`
 	Extensions  *[]V2Extension `xml:">Extension,omitempty"`
@@ -56,10 +56,10 @@ type V3Linear struct {
 
 type V3Icon struct {
 	StaticResource   *V2StaticResource `xml:",omitempty"`
-	IFrameResource   *CDATAURI         `xml:",omitempty"`
+	IFrameResource   *CDataURI         `xml:",omitempty"`
 	HTMLResource     *V3HTMLResource   `xml:",omitempty"`
 	IconClicks       *V3IconClicks     `xml:",omitempty"`
-	IconViewTracking []CDATAURI        `xml:",omitempty"`
+	IconViewTracking []CDataURI        `xml:",omitempty"`
 	Program          string            `xml:"program,attr"`
 	Width            int               `xml:"width,attr"`
 	Height           int               `xml:"height,attr"`
@@ -76,8 +76,8 @@ type V3HTMLResource struct {
 }
 
 type V3IconClicks struct {
-	IconClickTracking []CDATAURI `xml:",omitempty"`
-	IconClickThrough  *CDATAURI  `xml:",omitempty"`
+	IconClickTracking []CDataURI `xml:",omitempty"`
+	IconClickThrough  *CDataURI  `xml:",omitempty"`
 }
 
 type V3Tracking struct {
@@ -114,11 +114,11 @@ type V3CompanionAds struct {
 
 type V3Companion struct {
 	StaticResource        *V2StaticResource `xml:",omitempty"`
-	IFrameResource        *CDATAURI         `xml:",omitempty"`
+	IFrameResource        *CDataURI         `xml:",omitempty"`
 	HTMLResource          *V3HTMLResource   `xml:",omitempty"`
 	CreativeExtensions    *[]V2Extension    `xml:">CreativeExtension,omitempty"`
 	TrackingEvents        *[]V3Tracking     `xml:">Tracking,omitempty"`
-	CompanionClickThrough *CDATAURI         `xml:",omitempty"`
+	CompanionClickThrough *CDataURI         `xml:",omitempty"`
 	AltText               string            `xml:",omitempty"`
 	AdParameters          *V3AdParameters   `xml:",omitempty"`
 	Id                    string            `xml:"id,attr,omitempty"`
@@ -139,11 +139,11 @@ type V3NonLinearAds struct {
 
 type V3NonLinear struct {
 	StaticResource         *V2StaticResource `xml:",omitempty"`
-	IFrameResource         *CDATAURI         `xml:",omitempty"`
+	IFrameResource         *CDataURI         `xml:",omitempty"`
 	HTMLResource           *V3HTMLResource   `xml:",omitempty"`
 	CreativeExtensions     *[]V2Extension    `xml:">CreativeExtension,omitempty"`
-	NonLinearClickTracking []CDATAURI        `xml:",omitempty"`
-	NonLinearClickThrough  *CDATAURI         `xml:",omitempty"`
+	NonLinearClickTracking []CDataURI        `xml:",omitempty"`
+	NonLinearClickThrough  *CDataURI         `xml:",omitempty"`
 	AdParameters           *V3AdParameters   `xml:",omitempty"`
 	Id                     string            `xml:"id,attr,omitempty"`
 	Width                  int               `xml:"width,attr"`
@@ -158,9 +158,9 @@ type V3NonLinear struct {
 
 type V3Wrapper struct {
 	AdSystem     V2AdSystem
-	VASTAdTagURI CDATAURI
-	Error        *CDATAURI `xml:",omitempty"`
-	Impression   []CDATAURI
+	VASTAdTagURI CDataURI
+	Error        *CDataURI `xml:",omitempty"`
+	Impression   []CDataURI
 	Creatives    *[]V3WrappedCreative `xml:">Creative,omitempty"`
 	Extensions   *[]V2Extension       `xml:">Extension,omitempty"`
 }
@@ -188,12 +188,12 @@ type V3WrappedVideoClicks struct {
 
 type V3CompanionWrapper struct {
 	StaticResource         *V2StaticResource `xml:",omitempty"`
-	IFrameResource         *CDATAURI         `xml:",omitempty"`
+	IFrameResource         *CDataURI         `xml:",omitempty"`
 	HTMLResource           *V3HTMLResource   `xml:",omitempty"`
 	CreativeExtensions     *[]V2Extension    `xml:">CreativeExtension,omitempty"`
 	TrackingEvents         *[]V3Tracking     `xml:">Tracking,omitempty"`
-	CompanionClickThrough  *CDATAURI         `xml:",omitempty"`
-	CompanionClickTracking []CDATAURI        `xml:",omitempty"`
+	CompanionClickThrough  *CDataURI         `xml:",omitempty"`
+	CompanionClickTracking []CDataURI        `xml:",omitempty"`
 	AltText                string            `xml:",omitempty"`
 	AdParameters           *V3AdParameters   `xml:",omitempty"`
 	Id                     string            `xml:"id,attr,omitempty"`
@@ -214,7 +214,7 @@ type V3WrappedNonLinearAds struct {
 
 type V3NonLinearWrapper struct {
 	CreativeExtensions     *[]V2Extension `xml:">CreativeExtension,omitempty"`
-	NonLinearClickTracking []CDATAURI     `xml:",omitempty"`
+	NonLinearClickTracking []CDataURI     `xml:",omitempty"`
 	Id                     string         `xml:"id,attr,omitempty"`
 	Width                  int            `xml:"width,attr"`
 	Height                 int            `xml:"height,attr"`
