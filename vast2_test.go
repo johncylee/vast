@@ -23,7 +23,13 @@ func testXML(t *testing.T, fn string, v interface{}) {
 	if b, err = os.ReadFile(expected); err != nil {
 		t.Fatal("os.ReadFile:", err)
 	}
-	if bytes.Compare(marshaled, b) != 0 {
+	if !bytes.Equal(marshaled, b) {
+		f, err := os.CreateTemp("", "vast-*.xml")
+		if err == nil {
+			if _, err = f.Write(marshaled); err == nil {
+				t.Log("Output in:", f.Name())
+			}
+		}
 		t.Fatal("Unexpected marshel output:", fn)
 	}
 }
@@ -60,7 +66,7 @@ func TestEmpty(t *testing.T) {
 	if err != nil {
 		t.Fatal("os.ReadFile:", err)
 	}
-	if bytes.Compare(marshaled, b) != 0 {
+	if !bytes.Equal(marshaled, b) {
 		t.Fatal("Unexpected marshel output:", string(marshaled))
 	}
 	var v3 VAST3
@@ -72,7 +78,7 @@ func TestEmpty(t *testing.T) {
 	if b, err = os.ReadFile(fn); err != nil {
 		t.Fatal("os.ReadFile:", err)
 	}
-	if bytes.Compare(marshaled, b) != 0 {
+	if !bytes.Equal(marshaled, b) {
 		t.Fatal("Unexpected marshel output:", string(marshaled))
 	}
 }
