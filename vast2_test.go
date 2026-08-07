@@ -7,13 +7,13 @@ import (
 	"testing"
 )
 
-func testXML(t *testing.T, fn string, v interface{}) {
+func testXML(t *testing.T, fn string, v any) {
 	b, err := os.ReadFile(fn)
 	if err != nil {
-		t.Fatal("os.ReadFile:", err)
+		t.Fatalf("%s os.ReadFile: %s", fn, err)
 	}
 	if err = xml.Unmarshal(b, v); err != nil {
-		t.Fatal("xml.Unmarshal:", err)
+		t.Fatalf("%s xml.Unmarshal: %s", fn, err)
 	}
 	marshaled, err := xml.MarshalIndent(v, "", "  ")
 	if err != nil {
@@ -21,16 +21,16 @@ func testXML(t *testing.T, fn string, v interface{}) {
 	}
 	expected := fn[:len(fn)-4] + "-marshaled.xml"
 	if b, err = os.ReadFile(expected); err != nil {
-		t.Fatal("os.ReadFile:", err)
+		t.Fatalf("%s os.ReadFile: %s", expected, err)
 	}
 	if !bytes.Equal(marshaled, b) {
 		f, err := os.CreateTemp("", "vast-*.xml")
 		if err == nil {
 			if _, err = f.Write(marshaled); err == nil {
-				t.Log("Output in:", f.Name())
+				t.Logf("diff %s %s", f.Name(), expected)
 			}
 		}
-		t.Fatal("Unexpected marshel output:", fn)
+		t.Fatal("Unexpected marshel output:", expected)
 	}
 }
 

@@ -18,7 +18,7 @@ func (p *AnyURI) UnmarshalText(text []byte) (err error) {
 		*p = AnyURI(url.URL{})
 		return
 	}
-	u, err := url.ParseRequestURI(s)
+	u, err := url.Parse(s)
 	if err != nil {
 		return
 	}
@@ -36,6 +36,7 @@ type IdURI struct {
 }
 
 const durationPattern string = "15:04:05"
+const durationPatternMS string = "15:04:05.000"
 
 type XsTime time.Duration
 
@@ -60,6 +61,11 @@ type CDataElement struct {
 }
 
 type AuthorityElement struct {
-	Value     string
+	Value     string  `xml:",chardata"`
 	Authority *AnyURI `xml:"authority,attr,omitempty"`
+}
+
+type XmlEncodedStringElement struct {
+	Value      string `xml:",chardata"`
+	XmlEncoded *bool  `xml:"xmlEncoded,attr,omitempty"`
 }

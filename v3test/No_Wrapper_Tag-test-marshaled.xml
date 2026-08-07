@@ -1,4 +1,4 @@
-<VAST version="3.0">
+<VAST xmlns:xs="http://www.w3.org/2001/XMLSchema" version="3.0">
   <Ad id="20001">
     <InLine>
       <AdSystem version="4.0">iabtechlab</AdSystem>

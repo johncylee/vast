@@ -1,9 +1,8 @@
 package vast
 
 type VAST2 struct {
-	XMLName string `xml:"VAST"`
-	Ad      []V2Ad `xml:",omitempty"`
-	Version string `xml:"version,attr"`
+	VAST
+	Ad []V2Ad `xml:",omitempty"`
 }
 
 type V2Ad struct {

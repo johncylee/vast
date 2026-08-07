@@ -1,9 +1,8 @@
 package vast
 
 type VAST3 struct {
-	XMLName string `xml:"VAST"`
-	Ad      []V3Ad `xml:",omitempty"`
-	Version string `xml:"version,attr"`
+	VAST
+	Ad []V3Ad `xml:",omitempty"`
 }
 
 type V3Ad struct {
@@ -47,32 +46,27 @@ type V3Linear struct {
 	Icons              *[]V3Icon      `xml:">Icon,omitempty"`
 	CreativeExtensions *[]V2Extension `xml:">CreativeExtension,omitempty"`
 	Duration           XsTime
-	TrackingEvents     *[]V3Tracking   `xml:">Tracking,omitempty"`
-	AdParameters       *V3AdParameters `xml:",omitempty"`
-	VideoClicks        *V2VideoClicks  `xml:",omitempty"`
-	MediaFiles         *[]V3MediaFile  `xml:">MediaFile,omitempty"`
-	SkipOffset         string          `xml:"skipoffset,attr,omitempty"`
+	TrackingEvents     *[]V3Tracking            `xml:">Tracking,omitempty"`
+	AdParameters       *XmlEncodedStringElement `xml:",omitempty"`
+	VideoClicks        *V2VideoClicks           `xml:",omitempty"`
+	MediaFiles         *[]V3MediaFile           `xml:">MediaFile,omitempty"`
+	SkipOffset         string                   `xml:"skipoffset,attr,omitempty"`
 }
 
 type V3Icon struct {
-	StaticResource   *V2StaticResource `xml:",omitempty"`
-	IFrameResource   *CDataURI         `xml:",omitempty"`
-	HTMLResource     *V3HTMLResource   `xml:",omitempty"`
-	IconClicks       *V3IconClicks     `xml:",omitempty"`
-	IconViewTracking []CDataURI        `xml:",omitempty"`
-	Program          string            `xml:"program,attr"`
-	Width            int               `xml:"width,attr"`
-	Height           int               `xml:"height,attr"`
-	XPosition        string            `xml:"xPosition,attr"`
-	YPosition        string            `xml:"yPosition,attr"`
-	Offset           *XsTime           `xml:"offset,attr,omitempty"`
-	Duration         *XsTime           `xml:"duration,attr,omitempty"`
-	ApiFramework     string            `xml:"apiFramework,attr,omitempty"`
-}
-
-type V3HTMLResource struct {
-	XmlEncoded bool   `xml:"xmlEncoded,attr,omitempty"`
-	Value      string `xml:",cdata"`
+	StaticResource   *V2StaticResource        `xml:",omitempty"`
+	IFrameResource   *CDataURI                `xml:",omitempty"`
+	HTMLResource     *XmlEncodedStringElement `xml:",omitempty"`
+	IconClicks       *V3IconClicks            `xml:",omitempty"`
+	IconViewTracking []CDataURI               `xml:",omitempty"`
+	Program          string                   `xml:"program,attr"`
+	Width            int                      `xml:"width,attr"`
+	Height           int                      `xml:"height,attr"`
+	XPosition        string                   `xml:"xPosition,attr"`
+	YPosition        string                   `xml:"yPosition,attr"`
+	Offset           *XsTime                  `xml:"offset,attr,omitempty"`
+	Duration         *XsTime                  `xml:"duration,attr,omitempty"`
+	ApiFramework     string                   `xml:"apiFramework,attr,omitempty"`
 }
 
 type V3IconClicks struct {
@@ -84,11 +78,6 @@ type V3Tracking struct {
 	Event  string `xml:"event,attr"`
 	Offset string `xml:"offset,attr,omitempty"`
 	Value  AnyURI `xml:",cdata"`
-}
-
-type V3AdParameters struct {
-	XmlEncoded bool   `xml:"xmlEncoded,attr,omitempty"`
-	Value      string `xml:",chardata"`
 }
 
 type V3MediaFile struct {
@@ -113,23 +102,23 @@ type V3CompanionAds struct {
 }
 
 type V3Companion struct {
-	StaticResource        *V2StaticResource `xml:",omitempty"`
-	IFrameResource        *CDataURI         `xml:",omitempty"`
-	HTMLResource          *V3HTMLResource   `xml:",omitempty"`
-	CreativeExtensions    *[]V2Extension    `xml:">CreativeExtension,omitempty"`
-	TrackingEvents        *[]V3Tracking     `xml:">Tracking,omitempty"`
-	CompanionClickThrough *CDataURI         `xml:",omitempty"`
-	AltText               string            `xml:",omitempty"`
-	AdParameters          *V3AdParameters   `xml:",omitempty"`
-	Id                    string            `xml:"id,attr,omitempty"`
-	Width                 int               `xml:"width,attr"`
-	Height                int               `xml:"height,attr"`
-	AssetWidth            int               `xml:"assetWidth,attr,omitempty"`
-	AssetHeight           int               `xml:"assetHeight,attr,omitempty"`
-	ExpandedWidth         int               `xml:"expandedWidth,attr,omitempty"`
-	ExpandedHeight        int               `xml:"expandedHeight,attr,omitempty"`
-	ApiFramework          string            `xml:"apiFramework,attr,omitempty"`
-	AdSlotId              string            `xml:"adSlotId,attr,omitempty"`
+	StaticResource        *V2StaticResource        `xml:",omitempty"`
+	IFrameResource        *CDataURI                `xml:",omitempty"`
+	HTMLResource          *XmlEncodedStringElement `xml:",omitempty"`
+	CreativeExtensions    *[]V2Extension           `xml:">CreativeExtension,omitempty"`
+	TrackingEvents        *[]V3Tracking            `xml:">Tracking,omitempty"`
+	CompanionClickThrough *CDataURI                `xml:",omitempty"`
+	AltText               string                   `xml:",omitempty"`
+	AdParameters          *XmlEncodedStringElement `xml:",omitempty"`
+	Id                    string                   `xml:"id,attr,omitempty"`
+	Width                 int                      `xml:"width,attr"`
+	Height                int                      `xml:"height,attr"`
+	AssetWidth            int                      `xml:"assetWidth,attr,omitempty"`
+	AssetHeight           int                      `xml:"assetHeight,attr,omitempty"`
+	ExpandedWidth         int                      `xml:"expandedWidth,attr,omitempty"`
+	ExpandedHeight        int                      `xml:"expandedHeight,attr,omitempty"`
+	ApiFramework          string                   `xml:"apiFramework,attr,omitempty"`
+	AdSlotId              string                   `xml:"adSlotId,attr,omitempty"`
 }
 
 type V3NonLinearAds struct {
@@ -138,22 +127,22 @@ type V3NonLinearAds struct {
 }
 
 type V3NonLinear struct {
-	StaticResource         *V2StaticResource `xml:",omitempty"`
-	IFrameResource         *CDataURI         `xml:",omitempty"`
-	HTMLResource           *V3HTMLResource   `xml:",omitempty"`
-	CreativeExtensions     *[]V2Extension    `xml:">CreativeExtension,omitempty"`
-	NonLinearClickTracking []CDataURI        `xml:",omitempty"`
-	NonLinearClickThrough  *CDataURI         `xml:",omitempty"`
-	AdParameters           *V3AdParameters   `xml:",omitempty"`
-	Id                     string            `xml:"id,attr,omitempty"`
-	Width                  int               `xml:"width,attr"`
-	Height                 int               `xml:"height,attr"`
-	ExpandedWidth          int               `xml:"expandedWidth,attr,omitempty"`
-	ExpandedHeight         int               `xml:"expandedHeight,attr,omitempty"`
-	Scalable               bool              `xml:"scalable,attr,omitempty"`
-	MaintainAspectRatio    bool              `xml:"maintainAspectRatio,attr,omitempty"`
-	MinSuggestedDuration   *XsTime           `xml:"minSuggestedDuration,attr,omitempty"`
-	ApiFramework           string            `xml:"apiFramework,attr,omitempty"`
+	StaticResource         *V2StaticResource        `xml:",omitempty"`
+	IFrameResource         *CDataURI                `xml:",omitempty"`
+	HTMLResource           *XmlEncodedStringElement `xml:",omitempty"`
+	CreativeExtensions     *[]V2Extension           `xml:">CreativeExtension,omitempty"`
+	NonLinearClickTracking []CDataURI               `xml:",omitempty"`
+	NonLinearClickThrough  *CDataURI                `xml:",omitempty"`
+	AdParameters           *XmlEncodedStringElement `xml:",omitempty"`
+	Id                     string                   `xml:"id,attr,omitempty"`
+	Width                  int                      `xml:"width,attr"`
+	Height                 int                      `xml:"height,attr"`
+	ExpandedWidth          int                      `xml:"expandedWidth,attr,omitempty"`
+	ExpandedHeight         int                      `xml:"expandedHeight,attr,omitempty"`
+	Scalable               bool                     `xml:"scalable,attr,omitempty"`
+	MaintainAspectRatio    bool                     `xml:"maintainAspectRatio,attr,omitempty"`
+	MinSuggestedDuration   *XsTime                  `xml:"minSuggestedDuration,attr,omitempty"`
+	ApiFramework           string                   `xml:"apiFramework,attr,omitempty"`
 }
 
 type V3Wrapper struct {
@@ -187,24 +176,24 @@ type V3WrappedVideoClicks struct {
 }
 
 type V3CompanionWrapper struct {
-	StaticResource         *V2StaticResource `xml:",omitempty"`
-	IFrameResource         *CDataURI         `xml:",omitempty"`
-	HTMLResource           *V3HTMLResource   `xml:",omitempty"`
-	CreativeExtensions     *[]V2Extension    `xml:">CreativeExtension,omitempty"`
-	TrackingEvents         *[]V3Tracking     `xml:">Tracking,omitempty"`
-	CompanionClickThrough  *CDataURI         `xml:",omitempty"`
-	CompanionClickTracking []CDataURI        `xml:",omitempty"`
-	AltText                string            `xml:",omitempty"`
-	AdParameters           *V3AdParameters   `xml:",omitempty"`
-	Id                     string            `xml:"id,attr,omitempty"`
-	Width                  int               `xml:"width,attr"`
-	Height                 int               `xml:"height,attr"`
-	AssetWidth             int               `xml:"assetWidth,attr,omitempty"`
-	AssetHeight            int               `xml:"assetHeight,attr,omitempty"`
-	ExpandedWidth          int               `xml:"expandedWidth,attr,omitempty"`
-	ExpandedHeight         int               `xml:"expandedHeight,attr,omitempty"`
-	ApiFramework           string            `xml:"apiFramework,attr,omitempty"`
-	AdSlotId               string            `xml:"adSlotId,attr,omitempty"`
+	StaticResource         *V2StaticResource        `xml:",omitempty"`
+	IFrameResource         *CDataURI                `xml:",omitempty"`
+	HTMLResource           *XmlEncodedStringElement `xml:",omitempty"`
+	CreativeExtensions     *[]V2Extension           `xml:">CreativeExtension,omitempty"`
+	TrackingEvents         *[]V3Tracking            `xml:">Tracking,omitempty"`
+	CompanionClickThrough  *CDataURI                `xml:",omitempty"`
+	CompanionClickTracking []CDataURI               `xml:",omitempty"`
+	AltText                string                   `xml:",omitempty"`
+	AdParameters           *XmlEncodedStringElement `xml:",omitempty"`
+	Id                     string                   `xml:"id,attr,omitempty"`
+	Width                  int                      `xml:"width,attr"`
+	Height                 int                      `xml:"height,attr"`
+	AssetWidth             int                      `xml:"assetWidth,attr,omitempty"`
+	AssetHeight            int                      `xml:"assetHeight,attr,omitempty"`
+	ExpandedWidth          int                      `xml:"expandedWidth,attr,omitempty"`
+	ExpandedHeight         int                      `xml:"expandedHeight,attr,omitempty"`
+	ApiFramework           string                   `xml:"apiFramework,attr,omitempty"`
+	AdSlotId               string                   `xml:"adSlotId,attr,omitempty"`
 }
 
 type V3WrappedNonLinearAds struct {
