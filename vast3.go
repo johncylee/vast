@@ -10,7 +10,7 @@ type V3Ad struct {
 	InLine   *V3InLine  `xml:",omitempty"`
 	Wrapper  *V3Wrapper `xml:",omitempty"`
 	Id       string     `xml:"id,attr,omitempty"`
-	Sequence *int       `xml:"sequence,attr,omitempty"`
+	Sequence int        `xml:"sequence,attr,omitempty"`
 }
 
 // The "pointer to array" is a workaround. Without it, unmarshaling may creates an empty
