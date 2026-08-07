@@ -16,7 +16,7 @@ type V3Ad struct {
 // The "pointer to array" is a workaround. Without it, unmarshaling may creates an empty
 // array that leads to "<Extensions></Extensions>" after marshaling.
 type V3InLine struct {
-	AdSystem    V3AdSystem
+	AdSystem    V2AdSystem
 	AdTitle     string
 	Description string     `xml:",omitempty"`
 	Advertiser  string     `xml:",omitempty"`
@@ -26,11 +26,6 @@ type V3InLine struct {
 	Impression  []IdURI
 	Creatives   []V3Creative   `xml:">Creative"`
 	Extensions  *[]V2Extension `xml:">Extension,omitempty"`
-}
-
-type V3AdSystem struct {
-	Version string `xml:"version,attr,omitempty"`
-	Value   string `xml:",chardata"`
 }
 
 type V3Pricing struct {
@@ -162,7 +157,7 @@ type V3NonLinear struct {
 }
 
 type V3Wrapper struct {
-	AdSystem     V3AdSystem
+	AdSystem     V2AdSystem
 	VASTAdTagURI CDATAURI
 	Error        *CDATAURI `xml:",omitempty"`
 	Impression   []CDATAURI
