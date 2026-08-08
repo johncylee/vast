@@ -36,7 +36,6 @@ type IdURI struct {
 }
 
 const durationPattern string = "15:04:05"
-const durationPatternMS string = "15:04:05.000"
 
 type XsTime time.Duration
 
