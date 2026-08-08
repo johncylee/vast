@@ -2,9 +2,26 @@ package vast
 
 import (
 	"net/url"
+	"regexp"
 	"strings"
 	"time"
 )
+
+var reV4 = regexp.MustCompile(`^4\.[0-2]$`)
+
+// return: 2, 3, or 4 (4.0 ~ 4.2). -1 means unsupported.
+func IsSupported(ver string) (v int) {
+	if strings.HasPrefix(ver, "2.") {
+		v = 2
+	} else if strings.HasPrefix(ver, "3.") {
+		v = 3
+	} else if reV4.Match([]byte(ver)) {
+		v = 4
+	} else {
+		v = -1
+	}
+	return
+}
 
 type AnyURI url.URL
 
