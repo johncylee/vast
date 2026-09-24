@@ -4,7 +4,9 @@
       <AdSystem version="4.0">iabtechlab</AdSystem>
       <AdTitle>&#xA;                NonLinear Image&#xA;            </AdTitle>
       <Description>&#xA;                VAST 3.0 sample tag for Non Linear ad (i.e Overlay ad). Change the StaticResources to have a tag with your own content. Change NonLinear tag&#39;s parameters accordingly to view desired results. &#xA;            </Description>
-      <Pricing model="cpm" currency="USD"><![CDATA[25]]></Pricing>
+      <Pricing model="cpm" currency="USD"><![CDATA[
+                 25.00 
+            ]]></Pricing>
       <Error><![CDATA[http://example.com/error]]></Error>
       <Impression id="Impression-ID"><![CDATA[http://example.com/track/impression]]></Impression>
       <Creatives>

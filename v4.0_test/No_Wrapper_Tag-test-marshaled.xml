@@ -11,7 +11,9 @@
         </Extension>
       </Extensions>
       <Impression id="Impression-ID"><![CDATA[http://example.com/track/impression]]></Impression>
-      <Pricing model="cpm" currency="USD"><![CDATA[25]]></Pricing>
+      <Pricing model="cpm" currency="USD"><![CDATA[
+         25.00 
+      ]]></Pricing>
       <AdTitle>iabtechlab video ad</AdTitle>
       <Creatives>
         <Creative sequence="1" id="5480" adId="2447226">

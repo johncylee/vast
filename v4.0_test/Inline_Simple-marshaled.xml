@@ -4,7 +4,9 @@
       <AdSystem version="4.0">iabtechlab</AdSystem>
       <Error><![CDATA[http://example.com/error]]></Error>
       <Impression id="Impression-ID"><![CDATA[http://example.com/track/impression]]></Impression>
-      <Pricing model="cpm" currency="USD"><![CDATA[25]]></Pricing>
+      <Pricing model="cpm" currency="USD"><![CDATA[
+         25.00 
+      ]]></Pricing>
       <AdTitle>Inline Simple Ad</AdTitle>
       <Advertiser>IAB Sample Company</Advertiser>
       <Category authority="http://www.iabtechlab.com/categoryauthority">AD CONTENT description category</Category>

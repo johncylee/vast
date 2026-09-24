@@ -3,7 +3,9 @@
     <InLine>
       <AdSystem version="4.0">iabtechlab</AdSystem>
       <AdTitle>iabtechlab video ad</AdTitle>
-      <Pricing model="cpm" currency="USD"><![CDATA[25]]></Pricing>
+      <Pricing model="cpm" currency="USD"><![CDATA[
+                 25.00 
+            ]]></Pricing>
       <Error><![CDATA[http://example.com/error]]></Error>
       <Impression id="Impression-ID"><![CDATA[http://example.com/track/impression]]></Impression>
       <Creatives>

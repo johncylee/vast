@@ -28,9 +28,9 @@ type V3InLine struct {
 }
 
 type V3Pricing struct {
-	Model    string  `xml:"model,attr"`
-	Currency string  `xml:"currency,attr"`
-	Value    float32 `xml:",cdata"`
+	Model    string `xml:"model,attr"`
+	Currency string `xml:"currency,attr"`
+	Value    string `xml:",cdata"`
 }
 
 type V3Creative struct {
